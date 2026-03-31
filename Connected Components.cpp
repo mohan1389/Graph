@@ -9,7 +9,7 @@ class Solution {
 
         // Step 1: Build adjacency list
         vector<vector<int>> adj(V);
-        for (auto& e : edges) {
+        for (auto& e : edges) { //edgeList -> adjecency list
             int u = e[0];
             int v = e[1];
             adj[u].push_back(v);
