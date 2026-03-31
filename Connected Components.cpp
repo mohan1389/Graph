@@ -1,3 +1,5 @@
+//TC: O(V+E)
+//SC: O(V+E)
 class Solution {
   public:
     int findNumberOfComponent(int V, vector<vector<int>> &edges) {
