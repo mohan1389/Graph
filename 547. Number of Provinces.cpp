@@ -9,7 +9,7 @@ public:
         vector<int> vis(V,0);
 
         vector<vector<int>> adj(V);
-        for (int i = 0; i < V; i++) {
+        for (int i = 0; i < V; i++) { // adjecency matrix -> adjecency list
             for (int j = 0; j < V; j++) {
                 if (isConnected[i][j] == 1 && i != j) {
                     adj[i].push_back(j);
