@@ -40,3 +40,51 @@ public:
         return false;
     }
 };
+
+
+
+//BFS SOLUTION
+class Solution {
+public:
+    bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
+
+        vector<vector<int>> adj(numCourses);
+        vector<int> indegree(numCourses, 0);
+
+        // Step 1: Build graph
+        for(auto &it : prerequisites){
+            int u = it[1]; // prerequisite
+            int v = it[0]; // course
+
+            adj[u].push_back(v);
+            indegree[v]++;
+        }
+
+        // Step 2: Push all indegree 0 nodes
+        queue<int> q;
+        for(int i = 0; i < numCourses; i++){
+            if(indegree[i] == 0){
+                q.push(i);
+            }
+        }
+
+        int count = 0;
+
+        // Step 3: BFS
+        while(!q.empty()){
+            int node = q.front();
+            q.pop();
+            count++;
+
+            for(auto it : adj[node]){
+                indegree[it]--;
+                if(indegree[it] == 0){
+                    q.push(it);
+                }
+            }
+        }
+
+        // Step 4: Check cycle
+        return count == numCourses;
+    }
+};
